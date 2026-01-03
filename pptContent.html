@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cogentix HR Analytics Case Study Deck</title>
+    <!-- Load Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for presentation feel */
+        .slide {
+            max-width: 900px;
+            margin: 2rem auto;
+            min-height: 400px; /* Ensures slides have presence */
+            transition: all 0.3s ease;
+        }
+        .slide-number {
+            font-family: 'Inter', sans-serif;
+            color: #4b5563;
+        }
+        .primary-color {
+            color: #005F99; /* Primary Blue */
+        }
+        .accent-color {
+            color: #00B8AA; /* Accent Teal */
+        }
+        .section-header {
+            background-color: #f3f4f6;
+            color: #1f2937;
+            padding: 0.5rem 1rem;
+            margin-bottom: 1.5rem;
+            border-left: 5px solid #00B8AA;
+            font-weight: 700;
+        }
+        /* Custom table styling for analysis results */
+        .result-table th, .result-table td {
+            padding: 10px;
+            text-align: left;
+        }
+        .result-table th {
+            background-color: #e5e7eb;
+            font-weight: 600;
+        }
+        .result-table tr:nth-child(even) {
+            background-color: #f9fafb;
+        }
+        .result-table tr:hover {
+            background-color: #f0f0f0;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'primary-blue': '#005F99',
+                        'accent-teal': '#00B8AA',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 font-sans p-4 sm:p-8">
+
+<header class="text-center mb-8 max-w-5xl mx-auto">
+    <h1 class="text-4xl sm:text-5xl font-extrabold primary-color">Cogentix HR Analytics Case Study</h1>
+    <p class="text-xl text-gray-600 mt-2">Full Presentation Deck (35 Slides)</p>
+</header>
+
+<!-- SLIDE 1 — Title Slide -->
+<div id="slide-1" class="slide bg-white p-8 rounded-xl shadow-lg border border-gray-100">
+    <div class="slide-number">SLIDE 1 / 35</div>
+    <h2 class="text-5xl font-extrabold primary-color mt-8 mb-4">Cogentix HR Analytics Case Study</h2>
+    <div class="text-2xl font-semibold mt-8 space-y-2 text-gray-700">
+        <p>Engagement &bull; Performance &bull; Promotion Readiness</p>
+        <p>Compensation Equity &bull; Managerial Impact</p>
+    </div>
+
+    <div class="mt-12 text-lg text-gray-600">
+        <p>Prepared by: <span class="font-bold">Your Name</span></p>
+        <p>Dataset: 10,000 employees | 16 features</p>
+        <p>Tools Used: Pandas, Statsmodels, Scikit-learn, LightGBM, Streamlit Dashboard</p>
+    </div>
+    <div class="mt-8 p-3 bg-yellow-50 rounded text-sm">
+        <p class="font-semibold text-gray-700">Speaker Notes:</p>
+        <p>Introduce the project scope and emphasize that this is a complete analytical and modeling pipeline replicated for real-world HR analytics.</p>
+    </div>
+</div>
+
+<!-- SLIDE 2 — Project Overview -->
+<div id="slide-2" class="slide bg-white p-8 rounded-xl shadow-lg border border-gray-100">
+    <div class="slide-number">SLIDE 2 / 35</div>
+    <h2 class="text-3xl font-extrabold primary-color mb-6">Project Overview: Business Questions Addressed</h2>
+    <ul class="list-disc ml-6 text-lg space-y-3">
+        <li>
+            <span class="font-bold accent-color">Q1 – Engagement:</span>
+            What factors drive low employee engagement? Are demographics, tenure, performance, or compensation linked to low engagement?
+        </li>
+        <li>
+            <span class="font-bold accent-color">Q2 – Promotion Readiness:</span>
+            Can we build a fair, leakage-free predictive model to identify promotion-ready employees?
+        </li>
+        <li>
+            <span class="font-bold accent-color">Q3 – Performance Drivers:</span>
+            What influences high performance? Are training hours, salary, tenure, or demographics linked to performance?
+        </li>
+        <li>
+            <span class="font-bold accent-color">Q4 – Compensation vs Performance:</span>
+            Does pay (salary & bonus) align with employee performance across departments and roles? (Dashboard: <a href="https://molescogentix.streamlit.app/" target="_blank" class="text-blue-600 hover:underline">https://molescogentix.streamlit.app/</a>)
+        </li>
+        <li>
+            <span class="font-bold accent-color">Q5 – Managerial Impact:</span>
+            Which managers significantly contribute to low engagement? Who needs HR intervention?
+        </li>
+    </ul>
+    <div class="mt-8 p-3 bg-yellow-50 rounded text-sm">
+        <p class="font-semibold text-gray-700">Speaker Notes:</p>
+        <p>Summarize how each question ties into organizational decisions. [Image of an Employee Life Cycle Overview Graphic]</p>
+    </div>
+</div>
+
+<!-- SLIDE 3 — Data Overview -->
+<div id="slide-3" class="slide bg-white p-8 rounded-xl shadow-lg border border-gray-100">
+    <div class="slide-number">SLIDE 3 / 35</div>
+    <h2 class="text-3xl font-extrabold primary-color mb-6">Data Overview: Dataset Composition</h2>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div>
+            <h3 class="text-xl font-semibold accent-color mb-3">Dataset Composition</h3>
+            <ul class="list-disc ml-6 text-lg space-y-1">
+                <li>10,000 employees</li>
+                <li>16 fields including:
+                    <ul class="list-circle ml-4 text-base mt-1 space-y-0.5">
+                        <li>Employee demographics</li>
+                        <li>Job attributes</li>
+                        <li>Compensation</li>
+                        <li>Promotion history</li>
+                        <li>Engagement and performance</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <h3 class="text-xl font-semibold accent-color mb-3">Key Observations</h3>
+            <ul class="list-disc ml-6 text-lg space-y-1">
+                <li>Missing values: LastPromotionMonthsAgo (~453 rows)</li>
+                <li>High-cardinality features: ManagerID (~500 unique)</li>
+                <li>EngagementScore 25th percentile = 63.9</li>
+                <li>PerformanceRating mean &asymp; 3.18</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="mt-8">
+        <h3 class="text-xl font-semibold primary-color mb-3">Data Dictionary Example</h3>
+        <p class="text-gray-500 text-sm">A full data dictionary was used for feature selection.</p>
+    </div>
+
+    <div class="mt-8 p-3 bg-yellow-50 rounded text-sm">
+        <p class="font-semibold text-gray-700">Speaker Notes:</p>
+        <p>Explain that high-cardinality ManagerID informs special encoding steps used later. </p>
+    </div>
+</div>
+
+<!-- SLIDE 4 — End-to-End Analysis Workflow -->
+<div id="slide-4" class="slide bg-white p-8 rounded-xl shadow-lg border border-gray-100">
+    <div class="slide-number">SLIDE 4 / 35</div>
+    <h2 class="text-3xl font-extrabold primary-color mb-6">End-to-End Analysis Workflow</h2>
+    <h3 class="text-xl font-semibold accent-color mb-3">Process Followed</h3>
+    <ol class="list-decimal ml-6 text-lg space-y-2">
+        <li>Data Understanding & Cleaning</li>
+        <li>Feature Engineering</li>
+        <li>Exploratory Data Analysis (EDA)</li>
+        <li>Statistical Hypothesis Testing</li>
+        <li>Predictive Modeling (Logistic, RF, LightGBM)</li>
+        <li>Advanced Modeling (OOF Target Encoding, Interactions)</li>
+        <li>Manager-Level Statistical Testing (Wilson CI + z-test)</li>
+        <li>Compensation Fairness Analysis</li>
+        <li>Dashboard Deployment (Q4)</li>
+        <li>Recommendations</li>
+    </ol>
+    <div class="mt-8 p-3 bg-yellow-50 rounded text-sm">
+        <p class="font-semibold text-gray-700">Speaker Notes:</p>
+        <p>This slide sets the stage. Reinforce that each question required a different analytics technique. </p>
+    </div>
+</div>
+
+<!-- SLIDE 5 — Data Cleaning & Feature Engineering -->
+<div id="slide-5" class="slide bg-white p-8 rounded-xl shadow-lg border border-gray-100">
+    <div class="slide-number">SLIDE 5 / 35</div>
+    <h2 class="text-3xl font-extrabold primary-color mb-6">Data Cleaning & Feature Engineering</h2>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div>
+            <h3 class="text-xl font-semibold accent-color mb-3">Standardization Performed</h3>
+            <ul class="list-disc ml-6 text-lg space-y-1">
+                <li>Cleaned Gender values</li>
+                <li>Collapsed rare Location values (&lt;1%) into “Other”</li>
+                <li>Created AgeBucket</li>
+                <li>Standardized missing promotions</li>
+                <li>Handled outliers via log scaling when needed</li>
+            </ul>
+        </div>
+        <div>
+            <h3 class="text-xl font-semibold accent-color mb-3">Derived Features</h3>
+            <ul class="list-disc ml-6 text-lg space-y-1">
+                <li><code class="bg-gray-200 px-1 rounded">low_engagement</code> = bottom 25%</li>
+                <li><code class="bg-gray-200 px-1 rounded">SalaryRolePct</code>, <code class="bg-gray-200 px-1 rounded">SalaryDeptPct</code></li>
+                <li>Interaction features:
+                    <ul class="list-circle ml-4 text-base mt-1 space-y-0.5">
+                        <li><code class="bg-gray-200 px-1 rounded">YearsAtCompany²</code></li>
+                        <li><code class="bg-gray-200 px-1 rounded">SalaryPct &times; Tenure</code></li>
+                        <li><code class="bg-gray-200 px-1 rounded">Engagement &times; Performance</code></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+    <h3 class="text-xl font-semibold primary-color mt-6 mb-3">Why?</h3>
+    <p class="text-lg">To improve model stability, reduce bias, eliminate leakage, and increase fairness.</p>
+
+    <div class="mt-8 p-3 bg-yellow-50 rounded text-sm">
+        <p class="font-semibold text-gray-700">Speaker Notes:</p>
+        <p>Very important &mdash; this step is what enables non-leaky, valid modeling. [Image of a Feature Engineering Diagram]</p>
+    </div>
+</div>
+
+<div class="section-header">Q1 — ENGAGEMENT</div>
+
+<!-- SLIDE 6 — Q1: What Drives Low Engagement? (Problem Definition) -->
+<div id="slide-6" class="slide bg-white p-8 rounded-xl shadow-lg border border-gray-100">
+    <div class="slide-number">SLIDE 6 / 35</div>
+    <h2 class="text-3xl font-extrabold primary-color mb-6">Q1: What Drives Low Engagement? (Problem Definition)</h2>
+    <h3 class="text-xl font-semibold accent-color mb-3">Objective</h3>
+    <p class="text-lg">Identify whether demographics, compensation, performance, or tenure explain low engagement.</p>
+
+    <h3 class="text-xl font-semibold accent-color mt-6 mb-3">Definition</h3>
+    <p class="text-lg"><code class="bg-gray-200 px-1 rounded">low_engagement</code> = EngagementScore $\leq 63.9$ (25th percentile)</p>
+
+    <h3 class="text-xl font-semibold accent-color mt-6 mb-3">Methods Applied</h3>
+    <ul class="list-disc ml-6 text-lg space-y-1">
+        <li>Chi-square tests</li>
+        <li>Cramér’s V effect size</li>
+        <li>Mann-Whitney tests</li>
+        <li>Logistic regression (multivariate)</li>
+        <li>RF & LightGBM models</li>
+    </ul>
+    <div class="mt-8 p-3 bg-yellow-50 rounded text-sm">
+        <p class="font-semibold text-gray-700">Speaker Notes:</p>
+        <p>Before analyzing drivers, we defined low engagement objectively. [Image of EngagementScore Distribution Histogram]</p>
+    </div>
+</div>
+
+<!-- SLIDE 7 — Q1: Demographic Patterns (Chi-square Tests) -->
+<div id="slide-7" class="slide bg-white p-8 rounded-xl shadow-lg border border-gray-100">
+    <div class="slide-number">SLIDE 7 / 35</div>
+    <h2 class="text-3xl font-extrabold primary-color mb-6">Q1: Demographic Patterns (Chi-square Tests)</h2>
+    <h3 class="text-xl font-semibold accent-color mb-3">Chi-square Results</h3>
+    <table class="result-table w-full text-lg border">
+        <thead>
+            <tr>
+                <th>Attribute</th>
+                <th>p-value</th>
+                <th>Effect</th>
+                <th>Interpretation</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Gender</td>
+                <td>0.427</td>
+                <td>V=0.013</td>
+                <td>❌ Not significant</td>
+            </tr>
+            <tr>
+                <td>AgeBucket</td>
+                <td>0.638</td>
+                <td>V=0.018</td>
+                <td>❌ Not significant</td>
+            </tr>
+            <tr>
+                <td>Location</td>
+                <td>0.940</td>
+                <td>V=0.018</td>
+                <td>❌ Not significant</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3 class="text-xl font-semibold primary-color mt-6 mb-3">Conclusion</h3>
+    <p class="text-xl font-bold accent-color">➡️ No demographic group shows statistically higher low-engagement.</p>
+
+    <div class="mt-8 p-3 bg-yellow-50 rounded text-sm">
+        <p class="font-semibold text-gray-700">Speaker Notes:</p>
+        <p>This finding rejects demographic bias as a source for engagement issues. </p>
+    </div>
+</div>
+
+<!-- SLIDE 8 — Q1: Numeric Factors (Mann-Whitney, Effect Size) -->
+<div id="slide-8" class="slide bg-white p-8 rounded-xl shadow-lg border border-gray-100">
+    <div class="slide-number">SLIDE 8 / 35</div>
+    <h2 class="text-3xl font-extrabold primary-color mb-6">Q1: Numeric Factors (Mann-Whitney, Effect Size)</h2>
+    <h3 class="text-xl font-semibold accent-color mb-3">Factors compared:</h3>
+    <ul class="list-disc ml-6 text-lg space-y-1">
+        <li>Salary, Bonus</li>
+        <li>YearsAtCompany</li>
+        <li>Age</li>
+        <li>Performance</li>
+        <li>Training Hours</li>
+    </ul>
+
+    <h3 class="text-xl font-semibold accent-color mt-6 mb-3">Result</h3>
+    <ul class="list-disc ml-6 text-lg space-y-1">
+        <li>All tests: $p > 0.05$</li>
+        <li>Cohen’s $d \approx 0.0\text{–}0.03$ (Negligible effect size)</li>
+    </ul>
+
+    <h3 class="text-xl font-semibold primary-color mt-6 mb-3">Conclusion</h3>
+    <p class="text-xl font-bold accent-color">➡️ Salary, bonus, training hours, tenure do NOT significantly distinguish low vs high engagement employees.</p>
+    
+    <div class="mt-8 p-3 bg-yellow-50 rounded text-sm">
+        <p class="font-semibold text-gray-700">Speaker Notes:</p>
+        <p>There are no strong numerical discriminators &mdash; this points toward managerial or team root causes. </p>
+    </div>
+</div>
+
+<!-- SLIDE 9 — Q1: Multivariate Logistic Regression -->
+<div id="slide-9" class="slide bg-white p-8 rounded-xl shadow-lg border border-gray-100">
+    <div class="slide-number">SLIDE 9 / 35</div>
+    <h2 class="text-3xl font-extrabold primary-color mb-6">Q1: Multivariate Logistic Regression</h2>
+    <h3 class="text-xl font-semibold accent-color mb-3">Variables Used</h3>
+    <p class="text-lg">Age, Gender, Location, Salary, Tenure, Performance, Training</p>
+
+    <h3 class="text-xl font-semibold accent-color mt-6 mb-3">Outcome</h3>
+    <ul class="list-disc ml-6 text-lg space-y-1">
+        <li>All odds ratios $\approx 1.0$ (no predictive impact)</li>
+        <li>All p-values $\textgreater 0.1$ (except intercept)</li>
+    </ul>
+
+    <h3 class="text-xl font-semibold primary-color mt-6 mb-3">Conclusion</h3>
+    <p class="text-xl font-bold accent-color">➡️ Engagement is not driven by demographic or role-independent features.</p>
+    <p class="text-xl font-bold accent-color mt-2">➡️ Points toward team/manager context.</p>
+
+    <div class="mt-8 p-3 bg-yellow-50 rounded text-sm">
+        <p class="font-semibold text-gray-700">Speaker Notes:</p>
+        <p>This models all factors simultaneously; confirms earlier tests. </p>
+    </div>
+</div>
+
+<div class="section-header">Q2 — PROMOTION READINESS</div>
+
+<!-- SLIDE 10 — Q2: Promotion Readiness (Problem Definition) -->
+<div id="slide-10" class="slide bg-white p-8 rounded-xl shadow-lg border border-gray-100">
+    <div class="slide-number">SLIDE 10 / 35</div>
+    <h2 class="text-3xl font-extrabold primary-color mb-6">Q2: Promotion Readiness (Problem Definition)</h2>
+    <h3 class="text-xl font-semibold accent-color mb-3">Objective</h3>
+    <p class="text-lg">Build a fair, leakage-free model predicting whether an employee is promotion-ready.</p>
+
+    <h3 class="text-xl font-semibold accent-color mt-6 mb-3">Target Created</h3>
+    <p class="text-lg"><code class="bg-gray-200 px-1 rounded">PromotedLast12</code> = 1 if LastPromotionMonthsAgo $\leq 12$</p>
+
+    <h3 class="text-xl font-semibold accent-color mt-6 mb-3">Constraints</h3>
+    <ul class="list-disc ml-6 text-lg space-y-1">
+        <li>NO leakage</li>
+        <li>NO using LastPromotionMonthsAgo directly</li>
+        <li>NO manager aggregates from target</li>
+        <li>Must be explainable & fair</li>
+    </ul>
+
+    <div class="mt-8 p-3 bg-yellow-50 rounded text-sm">
+        <p class="font-semibold text-gray-700">Speaker Notes:</p>
+        <p>Early models looked too good &mdash; because they were leaky. We fixed that. </p>
+    </div>
+</div>
+
+<!-- SLIDE 11 — Q2: Models Tried (and Dropped Due to Leakage) -->
+<div id="slide-11" class="slide bg-white p-8 rounded-xl shadow-lg border border-gray-100">
+    <div class="slide-number">SLIDE 11 / 35</div>
+    <h2 class="text-3xl font-extrabold primary-color mb-6">Q2: Models Tried (and Dropped Due to Leakage)</h2>
+    <h3 class="text-xl font-semibold accent-color mb-3">Dropped Approaches</h3>
+    <ul class="list-disc ml-6 text-lg space-y-1">
+        <li>Using <code class="bg-gray-200 px-1 rounded">LastPromotionMonthsAgo</code> as a feature</li>
+        <li>Creating <code class="bg-gray-200 px-1 rounded">mgr_prom_rate</code>, <code class="bg-gray-200 px-1 rounded">mgr_avg_perf</code>, etc.</li>
+        <li>Using models with AUC $\approx 1.0$ &rarr; impossible & leaky</li>
+        <li>Attempted SHAP/permutation on misaligned feature sets &rarr; failed</li>
+    </ul>
+
+    <h3 class="text-xl font-semibold accent-color mt-6 mb-3">Why Dropped</h3>
+    <p class="text-lg">These models “peeked into the future,” making them invalid for HR fairness and auditability.</p>
+    
+    <div class="mt-8 p-3 bg-yellow-50 rounded text-sm">
+        <p class="font-semibold text-gray-700">Speaker Notes:</p>
+        <p>Emphasize fairness and auditability in HR contexts. </p>
+    </div>
+</div>
+
+<!-- SLIDE 12 — Q2: Final Valid Modeling Approach -->
+<div id="slide-12" class="slide bg-white p-8 rounded-xl shadow-lg border border-gray-100">
+    <div class="slide-number">SLIDE 12 / 35</div>
+    <h2 class="text-3xl font-extrabold primary-color mb-6">Q2: Final Valid Modeling Approach</h2>
+    <h3 class="text-xl font-semibold accent-color mb-3">Leakage-Free Method</h3>
+    <ul class="list-disc ml-6 text-lg space-y-1">
+        <li>Removed all target-derived features</li>
+        <li>One-hot + standardized numeric features</li>
+        <li>Added safe engineered features (<code class="bg-gray-200 px-1 rounded">SalaryRolePct</code>, <code class="bg-gray-200 px-1 rounded">SalaryDeptPct</code>)</li>
+        <li>Performed 5-fold cross validation</li>
+        <li>Added OOF Target Encoding for high-cardinality:
+            <ul class="list-circle ml-4 text-base mt-1">
+                <li>ManagerID, Department, Role</li>
+            </ul>
+        </li>
+        <li>Added interaction features</li>
+    </ul>
+
+    <h3 class="text-xl font-semibold primary-color mt-6 mb-3">Why This Works</h3>
+    <p class="text-xl font-bold text-green-600">✔ Fair &nbsp; ✔ Non-leaky &nbsp; ✔ Captures manager/role patterns without cheating</p>
+
+    <div class="mt-8 p-3 bg-yellow-50 rounded text-sm">
+        <p class="font-semibold text-gray-700">Speaker Notes:</p>
+        <p>OOF encoding prevents leakage while capturing group effects. [Image of a Predictive Modeling Architecture Diagram]</p>
+    </div>
+</div>
+
+<!-- SLIDE 13 — Q2: Model Performance Summary -->
+<div id="slide-13" class="slide bg-white p-8 rounded-xl shadow-lg border border-gray-100">
+    <div class="slide-number">SLIDE 13 / 35</div>
+    <h2 class="text-3xl font-extrabold primary-color mb-6">Q2: Model Performance Summary</h2>
+    <h3 class="text-xl font-semibold accent-color mb-3">LightGBM CV Results (Final)</h3>
+    <ul class="list-disc ml-6 text-lg space-y-1">
+        <li>AUC $\approx 0.54$</li>
+        <li>PR-AUC $\approx 0.43$</li>
+        <li>Precision@Top10% $\approx 0.45\text{–}0.50$</li>
+    </ul>
+
+    <h3 class="text-xl font-semibold accent-color mt-6 mb-3">Interpretation</h3>
+    <ul class="list-disc ml-6 text-lg space-y-1">
+        <li>Promotion decisions are complex &rarr; data lacks clear signals</li>
+        <li>Some signal captured through tenure, salary percentiles, and encoded manager factors</li>
+    </ul>
+
+    <h3 class="text-xl font-semibold primary-color mt-6 mb-3">Top Features</h3>
+    <p class="text-lg">BonusPercent, EngagementScore, YearsAtCompany, ManagerID_te, SalaryRolePct</p>
+
+    <div class="mt-8 p-3 bg-yellow-50 rounded text-sm">
+        <p class="font-semibold text-gray-700">Speaker Notes:</p>
+        <p>Explain that in HR, AUC 0.54 is acceptable if model is used for ranking & shortlist, not auto-decision. </p>
+    </div>
+</div>
+
+<div class="section-header">Q3 — PERFORMANCE DRIVERS</div>
+
+<!-- SLIDE 14 — Q3: Performance Drivers (Setup) -->
+<div id="slide-14" class="slide bg-white p-8 rounded-xl shadow-lg border border-gray-100">
+    <div class="slide-number">SLIDE 14 / 35</div>
+    <h2 class="text-3xl font-extrabold primary-color mb-6">Q3: Performance Drivers (Setup)</h2>
+    <h3 class="text-xl font-semibold accent-color mb-3">Objective</h3>
+    <p class="text-lg">Identify which factors influence high performance (PerformanceRating $\geq 4$).</p>
+
+    <h3 class="text-xl font-semibold accent-color mt-6 mb-3">Methods</h3>
+    <ul class="list-disc ml-6 text-lg space-y-1">
+        <li>Spearman correlations</li>
+        <li>Kruskal-Wallis tests</li>
+        <li>Logistic Regression & Random Forest</li>
+        <li>Heatmaps for Training $\times$ Tenure interactions</li>
+    </ul>
+
+    <div class="mt-8 p-3 bg-yellow-50 rounded text-sm">
+        <p class="font-semibold text-gray-700">Speaker Notes:</p>
+        <p>Define high performers objectively. </p>
+    </div>
+</div>
+
+<!-- SLIDE 15 — Q3: Correlation Results -->
+<div id="slide-15" class="slide bg-white p-8 rounded-xl shadow-lg border border-gray-100">
+    <div class="slide-number">SLIDE 15 / 35</div>
+    <h2 class="text-3xl font-extrabold primary-color mb-6">Q3: Correlation Results</h2>
+    <h3 class="text-xl font-semibold accent-color mb-3">Spearman Correlations</h3>
+    <table class="result-table w-full text-lg border">
+        <thead>
+            <tr>
+                <th>Factor</th>
+                <th>$\rho$</th>
+                <th>p-value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>TrainingHoursLastYear</td><td>$+0.007$</td><td>$0.47$</td></tr>
+            <tr><td>YearsAtCompany</td><td>$-0.009$</td><td>$0.36$</td></tr>
+            <tr><td>Salary</td><td>$+0.003$</td><td>$0.72$</td></tr>
+            <tr><td>BonusPercent</td><td>$-0.004$</td><td>$0.63$</td></tr>
+            <tr><td>EngagementScore</td><td>$+0.003$</td><td>$0.73$</td></tr>
+        </tbody>
+    </table>
+
+    <h3 class="text-xl font-semibold primary-color mt-6 mb-3">Conclusion</h3>
+    <p class="text-xl font-bold accent-color">➡️ No strong monotonic correlation</p>
+    <p class="text-xl font-bold accent-color mt-2">➡️ Performance likely influenced by qualitative factors (manager support, project roles)</p>
+
+    <div class="mt-8 p-3 bg-yellow-50 rounded text-sm">
+        <p class="font-semibold text-gray-700">Speaker Notes:</p>
+        <p>Quantitative features are weak predictors alone. </p>
+    </div>
+</div>
+
+<!-- SLIDE 16 — Q3: Categorical Factors (Kruskal-Wallis) -->
+<div id="slide-16" class="slide bg-white p-8 rounded-xl shadow-lg border border-gray-100">
+    <div class="slide-number">SLIDE 16 / 35</div>
+    <h2 class="text-3xl font-extrabold primary-color mb-6">Q3: Categorical Factors (Kruskal-Wallis)</h2>
+    <h3 class="text-xl font-semibold accent-color mb-3">Results</h3>
+    <ul class="list-disc ml-6 text-lg space-y-1">
+        <li><code class="bg-gray-200 px-1 rounded">Location\_Clean</code>: $p = 0.009 \rightarrow$ significant</li>
+        <li>Gender, Role, Department: not significant</li>
+    </ul>
+
+    <h3 class="text-xl font-semibold accent-color mt-6 mb-3">Interpretation</h3>
+    <ul class="list-disc ml-6 text-lg space-y-1">
+        <li>Location differences may reflect:
+            <ul class="list-circle ml-4 text-base mt-1">
+                <li>Different project types</li>
+                <li>Market expectations</li>
+                <li>Varying manager scoring tendencies</li>
+            </ul>
+        </li>
+    </ul>
+
+    <div class="mt-8 p-3 bg-yellow-50 rounded text-sm">
+        <p class="font-semibold text-gray-700">Speaker Notes:</p>
+        <p>Explain that significance $\neq$ large effect; verify effect sizes. [Image of Boxplot for Performance by Location Group]</p>
+    </div>
+</div>
+
+<!-- SLIDE 17 — Q3: Predictive Modeling (High Performance) -->
+<div id="slide-17" class="slide bg-white p-8 rounded-xl shadow-lg border border-gray-100">
+    <div class="slide-number">SLIDE 17 / 35</div>
+    <h2 class="text-3xl font-extrabold primary-color mb-6">Q3: Predictive Modeling (High Performance)</h2>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div>
+            <h3 class="text-xl font-semibold accent-color mb-3">Logistic Regression</h3>
+            <ul class="list-disc ml-6 text-lg space-y-1">
+                <li>AUC $\approx 0.50$</li>
+                <li>Weak predictive power</li>
+            </ul>
+        </div>
+        <div>
+            <h3 class="text-xl font-semibold accent-color mb-3">Random Forest</h3>
+            <ul class="list-disc ml-6 text-lg space-y-1">
+                <li>AUC $\approx 0.51$</li>
+                <li>Precision@10% $\approx 0.36$</li>
+            </ul>
+        </div>
+    </div>
+    
+    <h3 class="text-xl font-semibold primary-color mt-6 mb-3">Conclusion</h3>
+    <p class="text-xl font-bold accent-color">➡️ Model cannot reliably predict high performance</p>
+    <p class="text-xl font-bold accent-color mt-2">➡️ Performance ratings appear subjective or role-specific</p>
+    <p class="text-xl font-bold accent-color mt-2">➡️ EngagementScore does not strongly align with performance</p>
+
+    <div class="mt-8 p-3 bg-yellow-50 rounded text-sm">
+        <p class="font-semibold text-gray-700">Speaker Notes:</p>
+        <p>Align expectations: insufficient signal in dataset. </p>
+    </div>
+</div>
+
+<!-- SLIDE 18 — Q3: Training vs Tenure Heatmap -->
+<div id="slide-18" class="slide bg-white p-8 rounded-xl shadow-lg border border-gray-100">
+    <div class="slide-number">SLIDE 18 / 35</div>
+    <h2 class="text-3xl font-extrabold primary-color mb-6">Q3: Training vs Tenure Heatmap</h2>
+    <h3 class="text-xl font-semibold accent-color mb-3">Insight</h3>
+    <p class="text-lg">Heatmap shows average performance across TrainingHours bins and YearsAtCompany bins.</p>
+
+    <h3 class="text-xl font-semibold accent-color mt-6 mb-3">Observed Pattern</h3>
+    <ul class="list-disc ml-6 text-lg space-y-1">
+        <li>No consistent upward trend</li>
+        <li>Moderate training hours show slightly higher performance but not strongly</li>
+    </ul>
+
+    <h3 class="text-xl font-semibold primary-color mt-6 mb-3">Conclusion</h3>
+    <p class="text-xl font-bold accent-color">➡️ Increasing training alone may not improve performance</p>
+    <p class="text-xl font-bold accent-color mt-2">➡️ Role alignment and manager coaching may matter more</p>
+
+    <div class="mt-8 p-3 bg-yellow-50 rounded text-sm">
+        <p class="font-semibold text-gray-700">Speaker Notes:</p>
+        <p>Use this to inform L&amp;D strategy. </p>
+    </div>
+</div>
+
+<div class="section-header">Q4 — COMPENSATION & PERFORMANCE</div>
+
+<!-- SLIDE 19 — Q4: Compensation vs Performance (Objective) -->
+<div id="slide-19" class="slide bg-white p-8 rounded-xl shadow-lg border border-gray-100">
+    <div class="slide-number">SLIDE 19 / 35</div>
+    <h2 class="text-3xl font-extrabold primary-color mb-6">Q4: Compensation vs Performance (Objective)</h2>
+    <h3 class="text-xl font-semibold accent-color mb-3">Goal</h3>
+    <p class="text-lg">Assess whether salary & bonus are aligned with performance, and identify pay inequities.</p>
+    <p class="text-base text-gray-500 mt-2">Dashboard Link: <a href="https://molescogentix.streamlit.app/" target="_blank" class="text-blue-600 hover:underline">https://molescogentix.streamlit.app/</a></p>
+
+    <h3 class="text-xl font-semibold accent-color mt-6 mb-3">Key Questions</h3>
+    <ul class="list-disc ml-6 text-lg space-y-1">
+        <li>Are high performers paid equitably within their roles?</li>
+        <li>Are bonus \% aligned with performance ratings?</li>
+        <li>Are there demographic or location-based pay gaps?</li>
+        <li>Which employees/managers require compensation review?</li>
+    </ul>
+
+    <div class="mt-8 p-3 bg-yellow-50 rounded text-sm">
+        <p class="font-semibold text-gray-700">Speaker Notes:</p>
+        <p>Mention that dashboard supports real-time exploration. [Image of the Streamlit Dashboard Screenshot]</p>
+    </div>
+</div>
+
+<!-- SLIDE 20 — Q4: Dashboard Components -->
+<div id="slide-20" class="slide bg-white p-8 rounded-xl shadow-lg border border-gray-100">
+    <div class="slide-number">SLIDE 20 / 35</div>
+    <h2 class="text-3xl font-extrabold primary-color mb-6">Q4: Dashboard Components</h2>
+    <h3 class="text-xl font-semibold accent-color mb-3">Filters</h3>
+    <p class="text-lg">Department, Role, ManagerID, Tenure, Location, Gender</p>
+
+    <h3 class="text-xl font-semibold accent-color mt-6 mb-3">Visuals</h3>
+    <ul class="list-disc ml-6 text-lg space-y-1">
+        <li>Salary vs Performance scatter</li>
+        <li>Boxplots (<code class="bg-gray-200 px-1 rounded">SalaryRolePct</code> vs Performance)</li>
+        <li>Bonus vs Rating distribution</li>
+        <li>Regression-based adjusted pay-gap metrics</li>
+        <li>Flagged underpaid employees</li>
+        <li>Manager-level compensation alignment</li>
+    </ul>
+
+    <h3 class="text-xl font-semibold accent-color mt-6 mb-3">Outputs</h3>
+    <p class="text-lg">KPI cards, Exportable flagged lists, Departmental heatmaps</p>
+
+    <div class="mt-8 p-3 bg-yellow-50 rounded text-sm">
+        <p class="font-semibold text-gray-700">Speaker Notes:</p>
+        <p>Encourage leadership to explore interactively. [Image of Dashboard Tabs Overview]</p>
+    </div>
+</div>
+
+<!-- SLIDE 21 — Q4: Salary vs Performance (Global View) -->
+<div id="slide-21" class="slide bg-white p-8 rounded-xl shadow-lg border border-gray-100">
+    <div class="slide-number">SLIDE 21 / 35</div>
+    <h2 class="text-3xl font-extrabold primary-color mb-6">Q4: Salary vs Performance (Global View)</h2>
+    <h3 class="text-xl font-semibold accent-color mb-3">Insights from Scatter (Salary vs PerformanceRating)</h3>
+    <ul class="list-disc ml-6 text-lg space-y-1">
+        <li>Weak global trend</li>
+        <li>Large variation within same rating</li>
+        <li>Outliers: high performers near low-salary tail</li>
+        <li>Location influences baseline compensation</li>
+    </ul>
+
+    <h3 class="text-xl font-semibold primary-color mt-6 mb-3">Interpretation</h3>
+    <p class="text-xl font-bold accent-color">➡️ Salary alignment must be examined within-role, not globally.</p>
+
+    <div class="mt-8 p-3 bg-yellow-50 rounded text-sm">
+        <p class="font-semibold text-gray-700">Speaker Notes:</p>
+        <p>Explain why global trends are misleading. </p>
+    </div>
+</div>
+
+<!-- SLIDE 22 — Q4: Within-Role Compensation Analysis -->
+<div id="slide-22" class="slide bg-white p-8 rounded-xl shadow-lg border border-gray-100">
+    <div class="slide-number">SLIDE 22 / 35</div>
+    <h2 class="text-3xl font-extrabold primary-color mb-6">Q4: Within-Role Compensation Analysis</h2>
+    <h3 class="text-xl font-semibold accent-color mb-3">What Matters</h3>
+    <ul class="list-disc ml-6 text-lg space-y-1">
+        <li><span class="font-bold">⬜ SalaryRolePct</span> &mdash; percentile position within the role</li>
+        <li>⬜ Adjust salary for tenure &amp; performance bucket</li>
+        <li>⬜ Compare Rating $\geq 4$ employees vs peers</li>
+    </ul>
+
+    <h3 class="text-xl font-semibold accent-color mt-6 mb-3">Findings</h3>
+    <ul class="list-disc ml-6 text-lg space-y-1">
+        <li>Some roles show up to $15\text{–}18\%$ high performers in bottom salary quintile</li>
+        <li>Indicates inconsistent pay progression or delayed raises</li>
+    </ul>
+
+    <h3 class="text-xl font-semibold primary-color mt-6 mb-3">Recommended Action</h3>
+    <p class="text-lg">Prioritized role-by-role pay correction. Manager-level audits for negative residuals.</p>
+
+    <div class="mt-8 p-3 bg-yellow-50 rounded text-sm">
+        <p class="font-semibold text-gray-700">Speaker Notes:</p>
+        <p>This is the most reliable fairness check. </p>
+    </div>
+</div>
+
+<!-- SLIDE 23 — Q4: Bonus% vs Performance Alignment -->
+<div id="slide-23" class="slide bg-white p-8 rounded-xl shadow-lg border border-gray-100">
+    <div class="slide-number">SLIDE 23 / 35</div>
+    <h2 class="text-3xl font-extrabold primary-color mb-6">Q4: Bonus% vs Performance Alignment</h2>
+    <h3 class="text-xl font-semibold accent-color mb-3">Findings</h3>
+    <ul class="list-disc ml-6 text-lg space-y-1">
+        <li>In multiple departments, bonus variation does not correlate with performance</li>
+        <li>High performers receiving low bonus\% $\rightarrow$ retention risk</li>
+        <li>Some teams over-reward low performers $\rightarrow$ inconsistent incentive structure</li>
+    </ul>
+
+    <h3 class="text-xl font-semibold primary-color mt-6 mb-3">Recommended Action</h3>
+    <p class="text-lg">Standardize performance-linked bonus brackets. Review manager-controlled discretionary bonuses.</p>
+
+    <div class="mt-8 p-3 bg-yellow-50 rounded text-sm">
+        <p class="font-semibold text-gray-700">Speaker Notes:</p>
+        <p>Bonus is often more uneven than salary; highlight risk areas. </p>
+    </div>
+</div>
+
+<!-- SLIDE 24 — Q4: Adjusted Pay Gap Regression -->
+<div id="slide-24" class="slide bg-white p-8 rounded-xl shadow-lg border border-gray-100">
+    <div class="slide-number">SLIDE 24 / 35</div>
+    <h2 class="text-3xl font-extrabold primary-color mb-6">Q4: Adjusted Pay Gap Regression</h2>
+    <h3 class="text-xl font-semibold accent-color mb-3">Regression Model</h3>
+    <p class="text-lg">$$ \log(\text{Salary}) \sim \text{Performance} + \text{Tenure} + \text{Age} + \text{Training} + \text{Role} + \text{Dept} + \text{Gender} + \text{Location} $$</p>
+
+    <h3 class="text-xl font-semibold accent-color mt-6 mb-3">Results (example)</h3>
+    <ul class="list-disc ml-6 text-lg space-y-1">
+        <li>Gender\_Female: $-3\%$ difference ($p = 0.02$)</li>
+        <li>Location differences also significant in some roles</li>
+        <li>$R^{2}$ modest $\rightarrow$ indicates salary influenced by unobserved factors</li>
+    </ul>
+
+    <h3 class="text-xl font-semibold primary-color mt-6 mb-3">Interpretation</h3>
+    <p class="text-xl font-bold accent-color">➡️ Some demographic disparities exist after adjusting for job-relevant factors.</p>
+
+    <div class="mt-8 p-3 bg-yellow-50 rounded text-sm">
+        <p class="font-semibold text-gray-700">Speaker Notes:</p>
+        <p>Explain that regression controls ensure fair comparison. </p>
+    </div>
+</div>
+
+<!-- SLIDE 25 — Q4: Identifying Underpaid Employees -->
+<div id="slide-25" class="slide bg-white p-8 rounded-xl shadow-lg border border-gray-100">
+    <div class="slide-number">SLIDE 25 / 35</div>
+    <h2 class="text-3xl font-extrabold primary-color mb-6">Q4: Identifying Underpaid Employees</h2>
+    <h3 class="text-xl font-semibold accent-color mb-3">Using Regression Residuals</h3>
+    <p class="text-lg">Residual = Actual Salary $-$ Predicted Salary</p>
+
+    <h3 class="text-xl font-semibold accent-color mt-6 mb-3">Flags</h3>
+    <ul class="list-disc ml-6 text-lg space-y-1">
+        <li>Residual $\textless -10\%$</li>
+        <li>Performance $\geq 4$</li>
+        <li>Tenure $\geq 2$ years</li>
+        <li>SalaryRolePct $\textless 0.25$ (bottom quartile for role)</li>
+    </ul>
+
+    <h3 class="text-xl font-semibold primary-color mt-6 mb-3">Dashboard Output</h3>
+    <p class="text-lg">List of 50+ employees prioritized for salary correction $\rightarrow$ includes: EmployeeID, Role, Performance, Salary, Predicted Salary, Gap \%.</p>
+
+    <div class="mt-8 p-3 bg-yellow-50 rounded text-sm">
+        <p class="font-semibold text-gray-700">Speaker Notes:</p>
+        <p>Emphasize validation before action. </p>
+    </div>
+</div>
+
+<!-- SLIDE 26 — Q4: Manager-Level Compensation Alignment -->
+<div id="slide-26" class="slide bg-white p-8 rounded-xl shadow-lg border border-gray-100">
+    <div class="slide-number">SLIDE 26 / 35</div>
+    <h2 class="text-3xl font-extrabold primary-color mb-6">Q4: Manager-Level Compensation Alignment</h2>
+    <h3 class="text-xl font-semibold accent-color mb-3">Metrics per Manager</h3>
+    <ul class="list-disc ml-6 text-lg space-y-1">
+        <li>Median salary vs role benchmark</li>
+        <li>Share of underpaid high performers</li>
+        <li>Bonus distribution patterns</li>
+        <li>Team salary dispersion</li>
+    </ul>
+
+    <h3 class="text-xl font-semibold primary-color mt-6 mb-3">Insights</h3>
+    <p class="text-lg">Managers with high misalignment scores correlate with teams showing low engagement (ties to Q5).</p>
+
+    <div class="mt-8 p-3 bg-yellow-50 rounded text-sm">
+        <p class="font-semibold text-gray-700">Speaker Notes:</p>
+        <p>Use this to prioritize manager coaching &amp; audits. </p>
+    </div>
+</div>
+
+<!-- SLIDE 27 — Q4: Equity & Subgroup Analysis -->
+<div id="slide-27" class="slide bg-white p-8 rounded-xl shadow-lg border border-gray-100">
+    <div class="slide-number">SLIDE 27 / 35</div>
+    <h2 class="text-3xl font-extrabold primary-color mb-6">Q4: Equity & Subgroup Analysis</h2>
+    <h3 class="text-xl font-semibold accent-color mb-3">Checks Performed</h3>
+    <p class="text-lg">Gender $\times$ Role, Location $\times$ Role, Gender $\times$ Tenure</p>
+
+    <h3 class="text-xl font-semibold accent-color mt-6 mb-3">Findings</h3>
+    <ul class="list-disc ml-6 text-lg space-y-1">
+        <li>Small but notable gender and location pay differences after adjustment</li>
+        <li>Some roles show clustering: female talent more likely in low salary percentiles despite equal performance</li>
+    </ul>
+
+    <h3 class="text-xl font-semibold primary-color mt-6 mb-3">Action</h3>
+    <p class="text-lg">Conduct role-specific HR review. Ensure consistent raise cycles.</p>
+
+    <div class="mt-8 p-3 bg-yellow-50 rounded text-sm">
+        <p class="font-semibold text-gray-700">Speaker Notes:</p>
+        <p>Essential for compliance and DEI reporting. </p>
+    </div>
+</div>
+
+<div class="section-header">Q5 — MANAGERIAL IMPACT</div>
+
+<!-- SLIDE 28 — Q5: Manager Impact (Problem Definition) -->
+<div id="slide-28" class="slide bg-white p-8 rounded-xl shadow-lg border border-gray-100">
+    <div class="slide-number">SLIDE 28 / 35</div>
+    <h2 class="text-3xl font-extrabold primary-color mb-6">Q5: Manager Impact (Problem Definition)</h2>
+    <h3 class="text-xl font-semibold accent-color mb-3">Objective</h3>
+    <p class="text-lg">Identify managers whose teams show significantly worse engagement.</p>
+
+    <h3 class="text-xl font-semibold accent-color mt-6 mb-3">Why?</h3>
+    <p class="text-lg">Manager quality is the strongest determinant of engagement and retention.</p>
+
+    <h3 class="text-xl font-semibold accent-color mt-6 mb-3">Methods</h3>
+    <p class="text-lg">Aggregations, Empirical Bayes shrinkage, Wilson Confidence Intervals, One-sided z-tests, Flagging statistically significant bad actors.</p>
+
+    <div class="mt-8 p-3 bg-yellow-50 rounded text-sm">
+        <p class="font-semibold text-gray-700">Speaker Notes:</p>
+        <p>Define why statistical rigor is necessary. [Image of an Employee Engagement Model Concept Diagram]</p>
+    </div>
+</div>
+
+<!-- SLIDE 29 — Q5: Manager-Level Aggregation -->
+<div id="slide-29" class="slide bg-white p-8 rounded-xl shadow-lg border border-gray-100">
+    <div class="slide-number">SLIDE 29 / 35</div>
+    <h2 class="text-3xl font-extrabold primary-color mb-6">Q5: Manager-Level Aggregation</h2>
+    <h3 class="text-xl font-semibold accent-color mb-3">For each ManagerID:</h3>
+    <p class="text-lg">team\_size, low\_count, pct\_low, avg\_engagement, avg\_performance, shrinkage-adjusted rate (adj\_pct\_low)</p>
+
+    <h3 class="text-xl font-semibold primary-color mt-6 mb-3">Why Shrinkage?</h3>
+    <p class="text-lg">Adjusts for small team sizes $\rightarrow$ avoids false positives by pulling extreme values toward the global mean.</p>
+
+    <div class="mt-8 p-3 bg-yellow-50 rounded text-sm">
+        <p class="font-semibold text-gray-700">Speaker Notes:</p>
+        <p>Smaller teams need correction because rates fluctuate more. </p>
+    </div>
+</div>
+
+<!-- SLIDE 30 — Q5: Statistical Significance Testing -->
+<div id="slide-30" class="slide bg-white p-8 rounded-xl shadow-lg border border-gray-100">
+    <div class="slide-number">SLIDE 30 / 35</div>
+    <h2 class="text-3xl font-extrabold primary-color mb-6">Q5: Statistical Significance Testing</h2>
+    <h3 class="text-xl font-semibold accent-color mb-3">Wilson Confidence Interval</h3>
+    <ul class="list-disc ml-6 text-lg space-y-1">
+        <li>Computes robust CI for proportions</li>
+        <li>If $\text{lower\_bound} \textgreater \text{global mean} \rightarrow$ manager is significantly worse</li>
+    </ul>
+
+    <h3 class="text-xl font-semibold accent-color mt-6 mb-3">One-sided z-test</h3>
+    <ul class="list-disc ml-6 text-lg space-y-1">
+        <li>Tests $H_0$: manager’s engagement $\leq$ global average</li>
+        <li>If $p \textless 0.05 \rightarrow$ manager significantly worse</li>
+    </ul>
+
+    <h3 class="text-xl font-semibold primary-color mt-6 mb-3">Flagging Criteria</h3>
+    <p class="text-lg">$\text{flag} = \text{Wilson\_low} \textgreater \text{global OR } p \textless 0.05$</p>
+
+    <div class="mt-8 p-3 bg-yellow-50 rounded text-sm">
+        <p class="font-semibold text-gray-700">Speaker Notes:</p>
+        <p>Explain test intuitively; avoids false accusations. </p>
+    </div>
+</div>
+
+<!-- SLIDE 31 — Q5: Final Flagged Managers -->
+<div id="slide-31" class="slide bg-white p-8 rounded-xl shadow-lg border border-gray-100">
+    <div class="slide-number">SLIDE 31 / 35</div>
+    <h2 class="text-3xl font-extrabold primary-color mb-6">Q5: Final Flagged Managers</h2>
+    <h3 class="text-xl font-semibold accent-color mb-3">Results</h3>
+    <ul class="list-disc ml-6 text-lg space-y-1">
+        <li><span class="font-bold text-red-600">26 managers flagged</span> as statistically worse than company baseline</li>
+        <li>Examples (top 5 worst):
+            <ul class="list-circle ml-4 text-base mt-1">
+                <li>AF100476, AF100297, AF100111, AF100143, AF100160</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3 class="text-xl font-semibold accent-color mt-6 mb-3">Observations</h3>
+    <ul class="list-disc ml-6 text-lg space-y-1">
+        <li>Many flagged managers show: Low avg engagement, Lower performance ratings, Compensation misalignment (links to Q4)</li>
+    </ul>
+
+    <div class="mt-8 p-3 bg-yellow-50 rounded text-sm">
+        <p class="font-semibold text-gray-700">Speaker Notes:</p>
+        <p>These names should go to HR Business Partners. </p>
+    </div>
+</div>
+
+<!-- SLIDE 32 — Q5: Manager Deep-Dive Insights -->
+<div id="slide-32" class="slide bg-white p-8 rounded-xl shadow-lg border border-gray-100">
+    <div class="slide-number">SLIDE 32 / 35</div>
+    <h2 class="text-3xl font-extrabold primary-color mb-6">Q5: Manager Deep-Dive Insights</h2>
+    <h3 class="text-xl font-semibold accent-color mb-3">Worst Managers vs Others</h3>
+    <ul class="list-disc ml-6 text-lg space-y-1">
+        <li>Higher $\text{pct\_low}$ despite similar salary, tenure, training</li>
+        <li>Lower avg engagement</li>
+        <li>Not driven by compensation or tenure $\rightarrow$ suggests leadership issues</li>
+    </ul>
+
+    <h3 class="text-xl font-semibold primary-color mt-6 mb-3">Recommended Actions</h3>
+    <ul class="list-disc ml-6 text-lg space-y-1">
+        <li>Targeted managerial coaching</li>
+        <li>Skip-level interviews</li>
+        <li>Team health assessment</li>
+        <li>Leadership training for flagged managers</li>
+    </ul>
+
+    <div class="mt-8 p-3 bg-yellow-50 rounded text-sm">
+        <p class="font-semibold text-gray-700">Speaker Notes:</p>
+        <p>Explain causality carefully &mdash; correlation, not accusation. </p>
+    </div>
+</div>
+
+<div class="section-header">FINAL RECOMMENDATIONS</div>
+
+<!-- SLIDE 33 — Organization-Wide Recommendations -->
+<div id="slide-33" class="slide bg-white p-8 rounded-xl shadow-lg border border-gray-100">
+    <div class="slide-number">SLIDE 33 / 35</div>
+    <h2 class="text-3xl font-extrabold primary-color mb-6">Organization-Wide Recommendations</h2>
+    
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <div class="p-4 border-l-4 border-accent-teal bg-gray-50 rounded">
+            <h3 class="font-bold accent-color mb-2">Engagement</h3>
+            <ul class="list-disc ml-4 text-sm space-y-1">
+                <li>Manager coaching for flagged leaders</li>
+                <li>Pulse surveys every quarter</li>
+                <li>Improved recognition programs</li>
+            </ul>
+        </div>
+        <div class="p-4 border-l-4 border-accent-teal bg-gray-50 rounded">
+            <h3 class="font-bold accent-color mb-2">Promotion</h3>
+            <ul class="list-disc ml-4 text-sm space-y-1">
+                <li>Use model only for ranking, not final decisions</li>
+                <li>Create structured promotion criteria</li>
+            </ul>
+        </div>
+        <div class="p-4 border-l-4 border-accent-teal bg-gray-50 rounded">
+            <h3 class="font-bold accent-color mb-2">Performance</h3>
+            <ul class="list-disc ml-4 text-sm space-y-1">
+                <li>Introduce standardized performance rubrics</li>
+                <li>Validate inter-location rating consistency</li>
+            </ul>
+        </div>
+        <div class="p-4 border-l-4 border-accent-teal bg-gray-50 rounded col-span-1 sm:col-span-2 md:col-span-3">
+            <h3 class="font-bold accent-color mb-2">Compensation (High Priority)</h3>
+            <ul class="list-disc ml-4 text-sm space-y-1">
+                <li>Role-by-role salary calibration & Fix outliers immediately</li>
+                <li>Standardize bonus policy</li>
+                <li>Monitor via dashboard quarterly</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="mt-8 p-3 bg-yellow-50 rounded text-sm">
+        <p class="font-semibold text-gray-700">Speaker Notes:</p>
+        <p>Connect insights to strategic outcomes. [Image of Recommendation Priority Matrix]</p>
+    </div>
+</div>
+
+<!-- SLIDE 34 — Final Summary -->
+<div id="slide-34" class="slide bg-white p-8 rounded-xl shadow-lg border border-gray-100">
+    <div class="slide-number">SLIDE 34 / 35</div>
+    <h2 class="text-3xl font-extrabold primary-color mb-6">Final Summary: Impact</h2>
+    <h3 class="text-xl font-semibold accent-color mb-3">What We Achieved</h3>
+    <ul class="list-disc ml-6 text-lg space-y-1">
+        <li>✔ Non-leaky ML models</li>
+        <li>✔ Robust statistical testing</li>
+        <li>✔ Manager impact quantification</li>
+        <li>✔ Compensation equity assessment</li>
+        <li>✔ Full interactive dashboard (Q4)</li>
+        <li>✔ End-to-end analytics workflow</li>
+    </ul>
+
+    <h3 class="text-xl font-semibold primary-color mt-6 mb-3">Impact</h3>
+    <ul class="list-disc ml-6 text-lg space-y-1 font-bold text-green-700">
+        <li>Fair HR decisions & Improved retention</li>
+        <li>Better leadership visibility</li>
+        <li>Data-driven compensation planning</li>
+    </ul>
+
+    <div class="mt-8 p-3 bg-yellow-50 rounded text-sm">
+        <p class="font-semibold text-gray-700">Speaker Notes:</p>
+        <p>End with emphasis on fairness, transparency, and actionable analytics.</p>
+    </div>
+</div>
+
+<!-- SLIDE 35 — Thank You -->
+<div id="slide-35" class="slide bg-white p-8 rounded-xl shadow-lg border border-gray-100 text-center">
+    <div class="slide-number">SLIDE 35 / 35</div>
+    <h2 class="text-5xl font-extrabold primary-color mt-16 mb-8">THANK YOU</h2>
+    <h3 class="text-2xl font-semibold text-gray-700 mb-8">For questions or detailed walkthroughs, refer to:</h3>
+    <p class="text-xl font-mono p-4 bg-gray-100 inline-block rounded-lg shadow-md">
+        Dashboard: <a href="https://molescogentix.streamlit.app/" target="_blank" class="text-blue-600 hover:underline">https://molescogentix.streamlit.app/</a>
+    </p>
+</div>
+
+<footer class="text-center mt-12 text-sm text-gray-500">
+    End of Presentation Deck.
+</footer>
+
+</body>
+</html>
